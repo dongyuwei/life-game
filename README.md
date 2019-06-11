@@ -2,6 +2,15 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Reference
+- [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
+- [cellular-automata](https://natureofcode.com/book/chapter-7-cellular-automata/)
+![2d array](https://natureofcode.com/book/imgs/chapter07/ch07_27.png)
+
+## 实现要点
+不要直接改变当前二维数组内Cells（state），每个迭代都根据当前二维数组内neighbors（3~8个相邻单元格）的状态来生成一份新的二维数组。视图更新就交给reactjs（或者vuejs也是可以的）。
+
+
 ## Available Scripts
 
 In the project directory, you can run:
