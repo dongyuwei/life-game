@@ -11,6 +11,7 @@ class Game extends Component {
   }
 
   start = () => {
+    clearInterval(this.timer);
     this.timer = setInterval(() => {
       this.lifeGame.iterate();
       this.setState(this.lifeGame.grid);

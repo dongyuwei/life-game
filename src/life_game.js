@@ -6,12 +6,7 @@ class Cell {
   }
 
   setNextState(neighbors) {
-    const lives = neighbors.reduce((acc, cell) => {
-      if (cell) {
-        acc = acc + cell.state;
-      }
-      return acc;
-    }, 0);
+    const lives = neighbors.reduce((acc, cell) => acc + cell.state, 0);
 
     if (this.state === 0) {
       if (lives === 3) {
@@ -61,6 +56,8 @@ class LifeGame {
     const x = cell.row,
       y = cell.column;
     const neightbors = [];
+    neightbors.push(grid[x][y - 1]);
+    neightbors.push(grid[x][y + 1]);
 
     if (grid[x - 1]) {
       neightbors.push(grid[x - 1][y - 1]);
@@ -73,14 +70,7 @@ class LifeGame {
       neightbors.push(grid[x + 1][y + 1]);
     }
 
-    if (grid[x][y - 1]) {
-      neightbors.push(grid[x][y - 1]);
-    }
-    if (grid[x][y + 1]) {
-      neightbors.push(grid[x][y + 1]);
-    }
-
-    return neightbors;
+    return neightbors.filter(n => !!n);
   }
 }
 
