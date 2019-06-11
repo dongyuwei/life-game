@@ -4,6 +4,7 @@ import LifeGame from "./life_game.js";
 class Game extends Component {
   constructor(props) {
     super(props);
+    this.interval = props.interval;
     this.lifeGame = new LifeGame(props.rows, props.columns);
     this.state = {
       grid: this.lifeGame.init()
@@ -14,8 +15,10 @@ class Game extends Component {
     clearInterval(this.timer);
     this.timer = setInterval(() => {
       this.lifeGame.iterate();
-      this.setState(this.lifeGame.grid);
-    }, 200);
+      this.setState({
+        grid: this.lifeGame.grid
+      });
+    }, this.interval);
   };
 
   pause = () => {
@@ -33,8 +36,13 @@ class Game extends Component {
     );
   };
 
+  setIterationInterval = e => {
+    this.interval = e.target.value;
+    this.start();
+  };
+
   render() {
-    const grid = this.state.grid;
+    const { grid } = this.state;
     return (
       <div>
         <div className="controls">
@@ -42,6 +50,10 @@ class Game extends Component {
           <button onClick={this.pause}>pause</button>
           <button onClick={this.start}>continue</button>
           <button onClick={this.restart}>restart</button>
+          <input
+            onChange={this.setIterationInterval}
+            placeholder="设置迭代速度（迭代间隔）"
+          />
         </div>
 
         <table className="gameGrid">

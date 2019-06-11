@@ -1,6 +1,7 @@
 .app {
   width: 1024px;
   margin: 20px auto;
+  text-align: center;
 }
 
 .controls {
@@ -8,6 +9,11 @@
 }
 .controls button {
   margin: 0 5px;
+  padding: 3px 5px;
+}
+
+.controls input {
+  margin-left: 20px;
   padding: 3px 5px;
 }
 
