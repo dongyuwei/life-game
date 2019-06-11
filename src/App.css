@@ -1,7 +1,8 @@
 .app {
-  width: 1024px;
+  width: 1300px;
   margin: 20px auto;
   text-align: center;
+  overflow: auto;
 }
 
 .controls {

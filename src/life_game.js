@@ -6,8 +6,7 @@ class Cell {
   }
 
   setNextState(neighbors) {
-    const lives = neighbors.reduce((acc, cell) => acc + cell.state, 0);
-
+    const lives = neighbors.reduce((acc, cell) => (acc = acc + cell.state), 0);
     if (this.state === 0) {
       if (lives === 3) {
         this.state = 1;
@@ -27,29 +26,29 @@ class LifeGame {
     this.grid = [];
   }
 
-  init() {
-    const rows = this.rows;
-    const columns = this.columns;
-    const grid = this.grid;
-    for (var i = 0; i < rows; i++) {
-      grid[i] = [];
-      for (var j = 0; j < columns; j++) {
-        grid[i][j] = new Cell(random(0, 1), i, j);
-      }
-    }
-    return grid;
+  initRandomly() {
+    return initGrid(this.rows, this.columns, this.grid);
+  }
+
+  reset() {
+    return initGrid(this.rows, this.columns, this.grid, 0);
   }
 
   iterate() {
     const rows = this.rows;
     const columns = this.columns;
-    const grid = this.grid;
+    const previousGrid = this.grid;
+    const nextGrid = [];
     for (var i = 0; i < rows; i++) {
+      nextGrid[i] = [];
       for (var j = 0; j < columns; j++) {
-        const cell = grid[i][j];
-        cell.setNextState(this.getNeighbors(grid, cell));
+        const cell = new Cell(previousGrid[i][j].state, i, j);
+        cell.setNextState(this.getNeighbors(previousGrid, cell));
+        nextGrid[i][j] = cell;
       }
     }
+    this.grid = nextGrid;
+    return nextGrid;
   }
 
   getNeighbors(grid, cell) {
@@ -74,8 +73,19 @@ class LifeGame {
   }
 }
 
-function random(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+function initGrid(rows, columns, grid, initState) {
+  for (var i = 0; i < rows; i++) {
+    grid[i] = grid[i] || [];
+    for (var j = 0; j < columns; j++) {
+      const state = typeof initState === "number" ? initState : random0or1();
+      grid[i][j] = new Cell(state, i, j);
+    }
+  }
+  return grid;
+}
+
+function random0or1() {
+  return Math.random() > 0.5 ? 1 : 0;
 }
 
 export default LifeGame;
