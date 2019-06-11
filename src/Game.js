@@ -16,6 +16,22 @@ class Game extends Component {
       this.setState(this.lifeGame.grid);
     }, 200);
   };
+
+  pause = () => {
+    clearInterval(this.timer);
+  };
+
+  restart = () => {
+    this.setState(
+      {
+        grid: this.lifeGame.init()
+      },
+      () => {
+        this.start();
+      }
+    );
+  };
+
   render() {
     const grid = this.state.grid;
     return (
@@ -23,7 +39,7 @@ class Game extends Component {
         <div className="controls">
           <button onClick={this.start}>start</button>
           <button onClick={this.pause}>pause</button>
-          <button onClick={this.continue}>continue</button>
+          <button onClick={this.start}>continue</button>
           <button onClick={this.restart}>restart</button>
         </div>
 
