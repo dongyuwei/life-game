@@ -14,17 +14,18 @@ class Game extends Component {
 
   start = () => {
     clearInterval(this.timer);
-    this.setState(
-      {
-        grid:
-          this.state.liveCells === 0
-            ? this.lifeGame.initRandomly()
-            : this.state.grid
-      },
-      () => {
-        this.continue();
-      }
-    );
+    if (this.state.liveCells === 0) {
+      this.setState(
+        {
+          grid: this.lifeGame.initRandomly()
+        },
+        () => {
+          this.continue();
+        }
+      );
+    } else {
+      this.continue();
+    }
   };
 
   pause = () => {
@@ -34,17 +35,15 @@ class Game extends Component {
   continue = () => {
     clearInterval(this.timer);
     this.timer = setInterval(() => {
-      this.lifeGame.iterate();
       this.setState({
-        grid: this.lifeGame.grid
+        grid: this.lifeGame.iterate()
       });
     }, this.interval);
   };
 
   next = () => {
-    const grid = this.lifeGame.iterate();
     this.setState({
-      grid: grid
+      grid: this.lifeGame.iterate()
     });
   };
 
