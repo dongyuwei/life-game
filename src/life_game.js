@@ -5,8 +5,7 @@ class Cell {
     this.column = column;
   }
 
-  setNextState(neighbors) {
-    const lives = neighbors.reduce((acc, cell) => (acc = acc + cell.state), 0);
+  setNextState(lives) {
     if (this.state === 0) {
       if (lives === 3) {
         this.state = 1;
@@ -43,7 +42,9 @@ class LifeGame {
       nextGrid[i] = [];
       for (var j = 0; j < columns; j++) {
         const cell = new Cell(previousGrid[i][j].state, i, j);
-        cell.setNextState(this.getNeighbors(previousGrid, cell));
+        cell.setNextState(
+          this.getAliveNeighbors(previousGrid, i, j, cell.state)
+        );
         nextGrid[i][j] = cell;
       }
     }
@@ -51,25 +52,16 @@ class LifeGame {
     return nextGrid;
   }
 
-  getNeighbors(grid, cell) {
-    const x = cell.row,
-      y = cell.column;
-    const neightbors = [];
-    neightbors.push(grid[x][y - 1]);
-    neightbors.push(grid[x][y + 1]);
-
-    if (grid[x - 1]) {
-      neightbors.push(grid[x - 1][y - 1]);
-      neightbors.push(grid[x - 1][y]);
-      neightbors.push(grid[x - 1][y + 1]);
+  getAliveNeighbors(grid, x, y, state) {
+    let lives = 0;
+    for (var i = -1; i <= 1; i++) {
+      for (var j = -1; j <= 1; j++) {
+        if (grid[x + i] && grid[x + i][y + j]) {
+          lives = lives + grid[x + i][y + j].state;
+        }
+      }
     }
-    if (grid[x + 1]) {
-      neightbors.push(grid[x + 1][y - 1]);
-      neightbors.push(grid[x + 1][y]);
-      neightbors.push(grid[x + 1][y + 1]);
-    }
-
-    return neightbors.filter(n => !!n);
+    return lives - state;
   }
 }
 
