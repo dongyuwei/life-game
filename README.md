@@ -8,6 +8,12 @@
 ## 实现要点
 不要直接改变当前二维数组内Cells（state），每个迭代都根据当前二维数组内neighbors（3~8个相邻单元格）的状态来生成一份新的二维数组。视图更新就交给reactjs（或者vuejs也是可以的）。
 
+## 性能优化
+`master`分支的代码运行时CPU占用较高，`native-dom-rerender`这个分支使用原生DOM API重新渲染表格，CPU占用大大降低。
+> 实现康威生命游戏最合适的数据结构是二维数组，react对于这种表格类型的渲染（100行60列，每个单元格是否需要重新渲染随机性比较大）太耗CPU，100毫秒迭代一次的话，用react重新渲染cpu大约占用120%~130%，用原生DOM API来更新的话，cpu占用下降到34%左右。200毫秒迭代一次的话cpu占用大约稳定在17%左右。react重新渲染做的事情太多了，很难优化掉。
+
+`iterate`(主要是`getAliveNeighbors`) 方法也做了重构优化，比之前的版本性能好得多（100多毫秒降到10几毫秒）。
+
 <hr>
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
