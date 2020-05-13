@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/life_game/static/css/main.120d732a.chunk.css",
+    "main.js": "/life_game/static/js/main.9032f8ea.chunk.js",
+    "main.js.map": "/life_game/static/js/main.9032f8ea.chunk.js.map",
+    "runtime~main.js": "/life_game/static/js/runtime~main.574974de.js",
+    "runtime~main.js.map": "/life_game/static/js/runtime~main.574974de.js.map",
+    "static/js/2.75df6d7f.chunk.js": "/life_game/static/js/2.75df6d7f.chunk.js",
+    "static/js/2.75df6d7f.chunk.js.map": "/life_game/static/js/2.75df6d7f.chunk.js.map",
+    "index.html": "/life_game/index.html",
+    "precache-manifest.694d7938bb5382d9bf714bb0be826c96.js": "/life_game/precache-manifest.694d7938bb5382d9bf714bb0be826c96.js",
+    "service-worker.js": "/life_game/service-worker.js",
+    "static/css/main.120d732a.chunk.css.map": "/life_game/static/css/main.120d732a.chunk.css.map"
+  }
+}
