@@ -5,14 +5,19 @@ class Cell {
     this.column = column;
   }
 
-  setNextState(lives) {
-    if (this.state === 0) {
-      if (lives === 3) {
-        this.state = 1;
+  setNextState(liveNeighbours) {
+    // 游戏规则：
+    // - Any live cell with two or three live neighbours survives.
+    // - Any dead cell with three live neighbours becomes a live cell.
+    // - All other live cells die in the next generation. Similarly, all other dead cells stay dead.
+
+    if (this.state === 1) {
+      if (liveNeighbours !== 2 && liveNeighbours !== 3) {
+        this.state = 0;
       }
     } else {
-      if (lives >= 4 || lives <= 1) {
-        this.state = 0;
+      if (liveNeighbours === 3) {
+        this.state = 1;
       }
     }
   }

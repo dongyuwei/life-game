@@ -4,6 +4,14 @@
 
 [Online Demo](https://dongyuwei.github.io/life-game/)
 
+## 康威生命游戏 游戏规则
+
+任何一个单元格在同一时刻最多有 8 个邻居单元格。
+
+- Any live cell with two or three live neighbours survives.
+- Any dead cell with three live neighbours becomes a live cell.
+- All other live cells die in the next generation. Similarly, all other dead cells stay dead.
+
 ## Reference
 
 - [cellular-automata](https://natureofcode.com/book/chapter-7-cellular-automata/)
