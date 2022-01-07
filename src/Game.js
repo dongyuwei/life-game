@@ -13,7 +13,7 @@ class Game extends Component {
 
     this.state = {
       grid: this.lifeGame.reset(),
-      liveCells: 0
+      liveCells: 0,
     };
   }
 
@@ -22,7 +22,7 @@ class Game extends Component {
     if (this.state.liveCells === 0) {
       this.setState(
         {
-          grid: this.lifeGame.initRandomly()
+          grid: this.lifeGame.initRandomly(),
         },
         () => {
           this.continue();
@@ -59,7 +59,7 @@ class Game extends Component {
 
   next = () => {
     this.setState({
-      grid: this.lifeGame.iterate()
+      grid: this.lifeGame.iterate(),
     });
   };
 
@@ -67,11 +67,11 @@ class Game extends Component {
     clearInterval(this.timer);
     this.setState({
       grid: this.lifeGame.reset(),
-      liveCells: 0
+      liveCells: 0,
     });
   };
 
-  setIterationInterval = e => {
+  setIterationInterval = (e) => {
     this.interval = e.target.value;
     this.continue();
   };
@@ -80,7 +80,7 @@ class Game extends Component {
     cell.state = cell.state === 0 ? 1 : 0;
 
     this.setState({
-      liveCells: this.state.liveCells + cell.state
+      liveCells: this.state.liveCells + cell.state,
     });
   }
 
@@ -114,11 +114,11 @@ class Game extends Component {
                         id={`cell-${i}-${j}`}
                         data-state={cell.state}
                         key={j}
-                        onClick={e => {
+                        onClick={(e) => {
                           this.toggleCellState(cell);
                         }}
                         className={cell.state === 1 ? "live" : "dead"}
-                        ref={el => {
+                        ref={(el) => {
                           this.tableCells[i][j] = el;
                         }}
                       />
