@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "57dc97cf0283b646fc4caf0cc4c346c2",
+    "revision": "8dc2a1a037652c3ebe31af862abe2880",
     "url": "/life-game/index.html"
   },
   {
-    "revision": "bc08b9df18e7f640af4c",
+    "revision": "ec5504fd782e8b4b6923",
     "url": "/life-game/static/css/main.120d732a.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/life-game/static/js/2.75df6d7f.chunk.js"
   },
   {
-    "revision": "bc08b9df18e7f640af4c",
-    "url": "/life-game/static/js/main.9032f8ea.chunk.js"
+    "revision": "ec5504fd782e8b4b6923",
+    "url": "/life-game/static/js/main.f69dbde0.chunk.js"
   },
   {
     "revision": "1be09715c05bf9bb34f4",

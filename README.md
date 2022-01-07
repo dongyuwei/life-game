@@ -1,25 +1,32 @@
 ## Conway's Game of Life implemented in js(reactjs as view layer)
+
 [Conway's Game of Life](https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life)
 
+[Online Demo](https://dongyuwei.github.io/life-game/)
+
 ## Reference
+
 - [cellular-automata](https://natureofcode.com/book/chapter-7-cellular-automata/)
-![2d array](public/2darr.png)
+  ![2d array](public/2darr.png)
 
 ## 实现要点
-不要直接改变当前二维数组内Cells（state），每个迭代都根据当前二维数组内neighbors（3~8个相邻单元格）的状态来生成一份新的二维数组。视图更新就交给reactjs（或者vuejs也是可以的）。
+
+不要直接改变当前二维数组内 Cells（state），每个迭代都根据当前二维数组内 neighbors（3~8 个相邻单元格）的状态来生成一份新的二维数组。视图更新就交给 reactjs（或者 vuejs 也是可以的）。
 
 ## 性能优化
-`master`分支的代码运行时CPU占用较高，`native-dom-rerender`这个分支使用原生DOM API重新渲染表格，CPU占用大大降低。
+
+`master`分支的代码运行时 CPU 占用较高，`native-dom-rerender`这个分支使用原生 DOM API 重新渲染表格，CPU 占用大大降低。
 
 更新：native-dom-rerender 分支已经合并到 master 分支。
 
-> 实现康威生命游戏最合适的数据结构是二维数组，react对于这种表格类型的渲染（100行60列，每个单元格是否需要重新渲染随机性比较大）太耗CPU，100毫秒迭代一次的话，用react重新渲染cpu大约占用120%~130%，用原生DOM API来更新的话，cpu占用下降到34%左右。200毫秒迭代一次的话cpu占用大约稳定在17%左右。react重新渲染做的事情太多了，很难优化掉。
+> 实现康威生命游戏最合适的数据结构是二维数组，react 对于这种表格类型的渲染（100 行 60 列，每个单元格是否需要重新渲染随机性比较大）太耗 CPU，100 毫秒迭代一次的话，用 react 重新渲染 cpu 大约占用 120%~130%，用原生 DOM API 来更新的话，cpu 占用下降到 34%左右。200 毫秒迭代一次的话 cpu 占用大约稳定在 17%左右。react 重新渲染做的事情太多了，很难优化掉。
 
-`iterate`(主要是`getAliveNeighbors`) 方法也做了重构优化，比之前的版本性能好得多（100多毫秒降到10几毫秒）。
+`iterate`(主要是`getAliveNeighbors`) 方法也做了重构优化，比之前的版本性能好得多（100 多毫秒降到 10 几毫秒）。
 
 <hr>
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
 ## Available Scripts
 
 In the project directory, you can run:
