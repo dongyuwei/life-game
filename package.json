@@ -4,8 +4,7 @@
   "private": true,
   "dependencies": {
     "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1"
+    "react-dom": "^16.8.6"
   },
   "homepage": "https://dongyuwei.github.io/life-game/",
   "scripts": {
@@ -14,6 +13,16 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "build-gh-pages": "yarn build && rm -rf ./docs && mv ./build/ ./docs/"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --write"
+    ]
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -29,5 +38,11 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "husky": "^7.0.4",
+    "lint-staged": "^12.1.6",
+    "prettier": "^2.5.1",
+    "react-scripts": "3.0.1"
   }
 }
