@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/life-game/static/css/main.120d732a.chunk.css",
-    "main.js": "/life-game/static/js/main.f69dbde0.chunk.js",
-    "main.js.map": "/life-game/static/js/main.f69dbde0.chunk.js.map",
+    "main.css": "/life-game/static/css/main.34489f9f.chunk.css",
+    "main.js": "/life-game/static/js/main.2264901e.chunk.js",
+    "main.js.map": "/life-game/static/js/main.2264901e.chunk.js.map",
     "runtime~main.js": "/life-game/static/js/runtime~main.05928ca7.js",
     "runtime~main.js.map": "/life-game/static/js/runtime~main.05928ca7.js.map",
     "static/js/2.75df6d7f.chunk.js": "/life-game/static/js/2.75df6d7f.chunk.js",
     "static/js/2.75df6d7f.chunk.js.map": "/life-game/static/js/2.75df6d7f.chunk.js.map",
     "index.html": "/life-game/index.html",
-    "precache-manifest.06c87968df8729dc0dfbd09a0fa97a82.js": "/life-game/precache-manifest.06c87968df8729dc0dfbd09a0fa97a82.js",
+    "precache-manifest.5517a05510a41d653c171d0877df9387.js": "/life-game/precache-manifest.5517a05510a41d653c171d0877df9387.js",
     "service-worker.js": "/life-game/service-worker.js",
-    "static/css/main.120d732a.chunk.css.map": "/life-game/static/css/main.120d732a.chunk.css.map"
+    "static/css/main.34489f9f.chunk.css.map": "/life-game/static/css/main.34489f9f.chunk.css.map"
   }
 }

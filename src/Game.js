@@ -98,11 +98,11 @@ class Game extends Component {
   render() {
     const { grid } = this.state;
     return (
-      <div>
+      <>
         <div className='controls'>
           <button onClick={this.start}>start</button>
-          <button onClick={this.next}>next</button>
           <button onClick={this.pause}>pause</button>
+          <button onClick={this.next}>next</button>
           <button onClick={this.continue}>continue</button>
           <button onClick={this.reset}>reset</button>
           <input
@@ -137,7 +137,7 @@ class Game extends Component {
             })}
           </tbody>
         </table>
-      </div>
+      </>
     );
   }
 }

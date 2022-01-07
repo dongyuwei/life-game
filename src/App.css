@@ -33,3 +33,7 @@
 .gameGrid td.live {
   background-color: green;
 }
+
+.poetry {
+  margin-top: 20px;
+}
