@@ -29,7 +29,7 @@ class LifeGame {
     return initGrid(this.rows, this.columns, this.grid);
   }
 
-  reset() {
+  initWithDeadCells() {
     return initGrid(this.rows, this.columns, this.grid, 0);
   }
 
@@ -69,7 +69,7 @@ function initGrid(rows, columns, grid, initState) {
   for (var i = 0; i < rows; i++) {
     grid[i] = grid[i] || [];
     for (var j = 0; j < columns; j++) {
-      const state = typeof initState === "number" ? initState : random0or1();
+      const state = initState === 0 ? initState : random0or1();
       grid[i][j] = new Cell(state, i, j);
     }
   }

@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import LifeGame from "./life_game.js";
+import React, { Component } from 'react';
+import LifeGame from './life_game.js';
 
 class Game extends Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class Game extends Component {
     }
 
     this.state = {
-      grid: this.lifeGame.reset(),
+      grid: this.lifeGame.initWithDeadCells(),
       liveCells: 0,
     };
   }
@@ -39,36 +39,44 @@ class Game extends Component {
 
   continue = () => {
     clearInterval(this.timer);
-    const game = this.lifeGame;
+
     this.timer = setInterval(() => {
-      const grid = game.iterate();
-      const rows = game.rows;
-      const columns = game.columns;
-      for (var i = 0; i < rows; i++) {
-        for (var j = 0; j < columns; j++) {
-          const cellEl = this.tableCells[i][j];
-          const cell = grid[i][j];
-          if (cellEl.dataset.state !== grid[i][j].state.toString()) {
-            cellEl.className = cell.state === 1 ? "live" : "dead";
-            cellEl.dataset.state = cell.state;
-          }
-        }
-      }
+      this.iterateOneStep();
     }, this.interval);
   };
 
+  iterateOneStep = () => {
+    const game = this.lifeGame;
+    const grid = game.iterate();
+    const rows = game.rows;
+    const columns = game.columns;
+    for (var i = 0; i < rows; i++) {
+      for (var j = 0; j < columns; j++) {
+        const cellEl = this.tableCells[i][j];
+        const cell = grid[i][j];
+        if (cellEl.dataset.state !== grid[i][j].state.toString()) {
+          cellEl.className = cell.state === 1 ? 'live' : 'dead';
+          cellEl.dataset.state = cell.state;
+        }
+      }
+    }
+  };
+
   next = () => {
-    this.setState({
-      grid: this.lifeGame.iterate(),
-    });
+    this.iterateOneStep();
   };
 
   reset = () => {
     clearInterval(this.timer);
-    this.setState({
-      grid: this.lifeGame.reset(),
-      liveCells: 0,
-    });
+    this.setState(
+      {
+        grid: this.lifeGame.initWithDeadCells(),
+        liveCells: 0,
+      },
+      () => {
+        this.iterateOneStep();
+      }
+    );
   };
 
   setIterationInterval = (e) => {
@@ -91,7 +99,7 @@ class Game extends Component {
     const { grid } = this.state;
     return (
       <div>
-        <div className="controls">
+        <div className='controls'>
           <button onClick={this.start}>start</button>
           <button onClick={this.next}>next</button>
           <button onClick={this.pause}>pause</button>
@@ -99,11 +107,11 @@ class Game extends Component {
           <button onClick={this.reset}>reset</button>
           <input
             onChange={this.setIterationInterval}
-            placeholder="设置迭代速度（迭代间隔）"
+            placeholder='设置迭代速度（迭代间隔）'
           />
         </div>
 
-        <table className="gameGrid">
+        <table className='gameGrid'>
           <tbody>
             {grid.map((rows, i) => {
               return (
@@ -117,7 +125,7 @@ class Game extends Component {
                         onClick={(e) => {
                           this.toggleCellState(cell);
                         }}
-                        className={cell.state === 1 ? "live" : "dead"}
+                        className={cell.state === 1 ? 'live' : 'dead'}
                         ref={(el) => {
                           this.tableCells[i][j] = el;
                         }}
