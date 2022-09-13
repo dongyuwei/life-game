@@ -119,8 +119,6 @@ class Game extends Component {
                   {rows.map((cell, j) => {
                     return (
                       <td
-                        id={`cell-${i}-${j}`}
-                        data-state={cell.state}
                         key={j}
                         onClick={(e) => {
                           this.toggleCellState(cell);
